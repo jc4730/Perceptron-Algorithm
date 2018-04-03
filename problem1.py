@@ -16,6 +16,7 @@ def main():
     data = []
     labels= []
     
+    # read data
     with open(inp_path,"r") as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
@@ -24,14 +25,16 @@ def main():
     
     data = np.array(data, dtype = float)
     labels = np.array(labels, dtype = float)
-    
+
+    # initialize param
     w = np.zeros(data.shape[1])
     b = 0
     
     w_prev = np.ones(data.shape[1])
     
     output = []
-    
+
+    # train
     while np.any(w_prev != w):
         w_prev = w
         for i in range(len(labels)):
